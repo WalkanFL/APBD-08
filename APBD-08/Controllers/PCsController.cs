@@ -57,8 +57,8 @@ namespace APBD_08.Controllers
         [HttpPost]
         public async Task<IActionResult> addPCAsync([FromBody] AddPCDTO addPC)
         {
-            await _dbService.addPCAsync(addPC);
-            return Created();   
+            var addedPC = await _dbService.addPCAsync(addPC);
+            return Created("201",addedPC);  
         }
         
         //• PUT api/pcs/{id}

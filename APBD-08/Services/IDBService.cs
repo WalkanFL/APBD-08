@@ -1,5 +1,6 @@
 ﻿using APBD_08.DTOs.ComponentDTOs;
 using APBD_08.DTOs.PCDTOs;
+using APBD_08.Entities;
 
 namespace APBD_08.Services;
 
@@ -20,9 +21,9 @@ public interface IDBService
         return null;
     }
 
-    public async Task<int> addPCAsync(AddPCDTO addPC)
+    public async Task<PC> addPCAsync(AddPCDTO addPC)
     {
-        return -1;
+        return null;
     }
 
     public async Task<int> updatePCAsync(int id, UpdatePCDTO updatePC)
