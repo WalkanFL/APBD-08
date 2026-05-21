@@ -13,8 +13,12 @@ public class PCConfiguration : IEntityTypeConfiguration<PC>
         builder.Property(p => p.Name).HasMaxLength(50).IsRequired();
 
         builder.Property(p => p.Weight).HasColumnType("float(5)").IsRequired();
+
+        builder.Property(p => p.Warranty).IsRequired();
         
         builder.Property(p => p.CreatedAt).HasColumnType("datetime").IsRequired();
+        
+        builder.Property(p => p.Stock).IsRequired();
 
         builder.HasData(new List<PC>()
         {

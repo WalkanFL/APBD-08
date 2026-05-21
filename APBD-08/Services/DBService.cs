@@ -64,14 +64,15 @@ public class DBService : IDBService
     public async Task<IEnumerable<ComponentWAmountDTO>> getPCsComponentsAsync(int id)
     {
         var result = await _dbContext.PCComponents
+            .Where(pcc => pcc.PCId == id)
             .Join(_dbContext.Components, pcc => pcc.ComponentCode, comp => comp.Code,
                 (pcc, comp) => new ComponentWAmountDTO
                 {
                     Code = comp.Code,
                     Name = comp.Name,
                     Description = comp.Description,
-                    ComponentManufacturersId = comp.ComponentManufacturersId,
-                    ComponentTypesId = comp.ComponentTypesId,
+                    ComponentManufacturersId = comp.ComponentManufacturerId,
+                    ComponentTypesId = comp.ComponentTypeId,
                     Amount = pcc.Amount
                 })
             .ToListAsync();

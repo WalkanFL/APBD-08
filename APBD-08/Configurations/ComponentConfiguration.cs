@@ -18,20 +18,20 @@ public class ComponentConfiguration : IEntityTypeConfiguration<Component>
         builder
             .HasOne(c => c.ComponentManufacturer)
             .WithMany(cm => cm.Components)
-            .HasForeignKey(c => c.ComponentManufacturersId)
+            .HasForeignKey(c => c.ComponentManufacturerId)
             .OnDelete(DeleteBehavior.Cascade);
         //fk
         builder
             .HasOne(c => c.ComponentType)
             .WithMany(ct => ct.Components)
-            .HasForeignKey(c => c.ComponentTypesId)
+            .HasForeignKey(c => c.ComponentTypeId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasData(new List<Component>()
         {
-            new Component() { Code = "#000000000", Name = "Computator", Description = "first ever computational component EVER", ComponentManufacturersId = 3, ComponentTypesId = 2},
-            new Component() { Code = "#000000001", Name = "Graphicler", Description = "seeing is believing", ComponentManufacturersId = 1, ComponentTypesId = 1},
-            new Component() { Code = "#000000010", Name = "The Thinker", Description = "hmmm, hmmmmmm", ComponentManufacturersId = 2, ComponentTypesId = 3}
+            new Component() { Code = "#000000000", Name = "Computator", Description = "first ever computational component EVER", ComponentManufacturerId = 3, ComponentTypeId = 2},
+            new Component() { Code = "#000000001", Name = "Graphicler", Description = "seeing is believing", ComponentManufacturerId = 1, ComponentTypeId = 1},
+            new Component() { Code = "#000000010", Name = "The Thinker", Description = "hmmm, hmmmmmm", ComponentManufacturerId = 2, ComponentTypeId = 3}
             
         });
         

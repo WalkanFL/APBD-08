@@ -21,6 +21,8 @@ public class PCComponentConfiguration : IEntityTypeConfiguration<PCComponent>
             .WithMany(c => c.PCComponents)
             .HasForeignKey(pcc => pcc.ComponentCode)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(pcc => pcc.Amount).IsRequired();
         
         builder.HasData(new List<PCComponent>()
         {

@@ -37,9 +37,13 @@ namespace APBD_08.Controllers
         [HttpGet]
         public async Task<IActionResult> getPCsComponentsAsync([FromRoute]int id)
         {
-            if (await _dbService.getPCAsync(id) == null)
+            try
             {
-                return NotFound(id);
+                _dbService.getPCAsync(id);
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
             }
 
             try
