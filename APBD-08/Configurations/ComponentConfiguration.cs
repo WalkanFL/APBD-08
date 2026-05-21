@@ -27,6 +27,14 @@ public class ComponentConfiguration : IEntityTypeConfiguration<Component>
             .HasForeignKey(c => c.ComponentTypesId)
             .OnDelete(DeleteBehavior.Cascade);
         
+        builder.HasData(new List<Component>()
+        {
+            new Component() { Code = "#000000000", Name = "Computator", Description = "first ever computational component EVER", ComponentManufacturersId = 3, ComponentTypesId = 2},
+            new Component() { Code = "#000000001", Name = "Graphicler", Description = "seeing is believing", ComponentManufacturersId = 1, ComponentTypesId = 1},
+            new Component() { Code = "#000000010", Name = "The Thinker", Description = "hmmm, hmmmmmm", ComponentManufacturersId = 2, ComponentTypesId = 3}
+            
+        });
+        
         builder.ToTable("Components");
     }
 }

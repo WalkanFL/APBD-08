@@ -21,7 +21,19 @@ public class PCComponentConfiguration : IEntityTypeConfiguration<PCComponent>
             .WithMany(c => c.PCComponents)
             .HasForeignKey(pcc => pcc.ComponentCode)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasData(new List<PCComponent>()
+        {
+            new PCComponent() { PCId = 1, ComponentCode = "#000000000", Amount = 1},
+            new PCComponent() { PCId = 1, ComponentCode = "#000000001", Amount = 1},
+            new PCComponent() { PCId = 1, ComponentCode = "#000000010", Amount = 1},
+            
+            new PCComponent() { PCId = 2, ComponentCode = "#000000000", Amount = 1},
+            new PCComponent() { PCId = 2, ComponentCode = "#000000001", Amount = 1},
+            new PCComponent() { PCId = 2, ComponentCode = "#000000010", Amount = 16},
 
+        });
+        
         builder.ToTable("PCComponents");
     }
 }
